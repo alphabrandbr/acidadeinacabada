@@ -157,7 +157,7 @@ export default async function Pagina() {
       {/* ═══════════════ RODAPÉ ═══════════════ */}
       <footer>
         <div className="footer-cols">
-          <div>Romance<br />126 páginas</div>
+          <div>Romance<br />164 páginas</div>
           <div>Ebook na Amazon<br />Impresso em tiragem única</div>
           <div>Acompanhe<br /><a href="https://instagram.com/versaoilustrada">@versaoilustrada</a></div>
         </div>
