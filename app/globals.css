@@ -269,7 +269,7 @@ footer a:hover{text-decoration:underline}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   display:flex;align-items:center;justify-content:center;text-align:center;
   font-family:var(--maquina);text-transform:uppercase;padding:1.5rem;
-  animation:cortina-sair .5s ease 2.9s forwards;
+  animation:cortina-sair .5s ease 4.9s forwards;
 }
 .cortina-org{font-size:.6rem;letter-spacing:.2em;color:#8a8178;margin-bottom:2.2rem;
   opacity:0;animation:cortina-chegar .5s ease .15s forwards}
@@ -284,7 +284,10 @@ footer a:hover{text-decoration:underline}
 .cortina .pisca{color:var(--lampiao)}
 @keyframes cortina-chegar{to{opacity:1}}
 @keyframes cortina-sair{to{opacity:0;visibility:hidden}}
+.cortina-conta{font-size:.6rem;letter-spacing:.2em;color:#8a8178;margin-top:2rem;
+  opacity:0;animation:cortina-chegar .5s ease 1.2s forwards}
+.cortina-conta b{font-weight:400;color:var(--lampiao)}
 @media (prefers-reduced-motion: reduce){
-  .cortina,.cortina-org,.cortina-rotulo,.cortina-senha,.cortina-linha{animation-duration:.01s}
+  .cortina,.cortina-org,.cortina-rotulo,.cortina-senha,.cortina-linha,.cortina-conta{animation-duration:.01s}
   .cortina{animation-delay:1.2s}
 }
