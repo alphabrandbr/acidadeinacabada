@@ -29,8 +29,11 @@ export default async function Pagina() {
     <>
       <Cortina senha={senha} />
       <div className="painel">
-        Departamento de Términos e Aberturas &nbsp;·&nbsp; Guichê <span className="num">08</span>
-        &nbsp;·&nbsp; senha <span className="num">{senha}</span> <span className="pisca">▮</span>
+        <span className="painel-org">Departamento de Términos e Aberturas</span>
+        <span className="painel-sep">·</span>
+        <span className="painel-guiche">
+          Guichê <span className="num">08</span> · senha <span className="num">{senha}</span> <span className="pisca">▮</span>
+        </span>
       </div>
 
       {/* ═══════════════ HERO ═══════════════ */}

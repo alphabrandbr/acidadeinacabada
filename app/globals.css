@@ -30,6 +30,14 @@ img{max-width:100%;display:block;height:auto}
   background:#1c1815;font-family:var(--maquina);color:var(--lampiao);
   font-size:.66rem;letter-spacing:.22em;text-align:center;
   padding:.6rem .5rem .5rem;text-transform:uppercase;
+  display:flex;flex-wrap:wrap;justify-content:center;
+  column-gap:.7rem;row-gap:.15rem;
+}
+.painel span{white-space:nowrap}
+.painel .pisca{white-space:normal}
+@media(max-width:680px){
+  .painel{font-size:.6rem;letter-spacing:.16em}
+  .painel-sep{display:none}
 }
 .painel .num{color:var(--papel)}
 .painel .pisca{animation:piscar 1.6s steps(1) infinite}
@@ -291,4 +299,18 @@ html[data-atendido="1"] .cortina{display:none}
 @media (prefers-reduced-motion: reduce){
   .cortina,.cortina-org,.cortina-rotulo,.cortina-senha,.cortina-linha,.cortina-conta{animation-duration:.01s}
   .cortina{animation-delay:1.2s}
+}
+
+
+/* ══════════ ajustes mobile ══════════ */
+/* banner um pouco maior no celular: corta só textura das pontas */
+@media(max-width:600px){
+  .hero-banner img{height:40vw;object-fit:cover;object-position:32% center}
+}
+/* botões confortáveis de dedo, empilhados */
+@media(max-width:480px){
+  .faixa-botoes{width:100%;flex-direction:column;align-items:stretch;gap:1.1rem}
+  .botao-marcado{width:100%}
+  .botao-marcado .botao{width:100%;max-width:340px;text-align:center;margin:0 auto}
+  .faixa-acao{gap:1.6rem}
 }
