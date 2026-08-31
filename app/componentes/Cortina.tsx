@@ -3,10 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Sala de espera: cobre a página por ~5s na primeira visita da sessão,
- * com contador regressivo. Some no fim, num clique, ou nem aparece se a
- * pessoa já foi atendida nesta aba (sessionStorage). Renderiza no servidor
- * já visível (sem flash); se o JS falhar, o fade-out do CSS resolve.
+ * Sala de espera: cobre a página por ~5s a cada visita, com contador
+ * regressivo. Some no fim ou num clique. Renderiza no servidor já visível
+ * (sem flash); se o JS falhar, o fade-out do CSS resolve.
  */
 export function Cortina({ senha }: { senha: number }) {
   const [visivel, setVisivel] = useState(true);
@@ -16,14 +15,10 @@ export function Cortina({ senha }: { senha: number }) {
   function atendido() {
     clearInterval(timers.current.iv);
     clearTimeout(timers.current.to);
-    try { sessionStorage.setItem("dta-atendido", "1"); } catch {}
     setVisivel(false);
   }
 
   useEffect(() => {
-    try {
-      if (sessionStorage.getItem("dta-atendido")) { setVisivel(false); return; }
-    } catch {}
     timers.current.iv = setInterval(() => setSeg((s) => Math.max(1, s - 1)), 1000);
     timers.current.to = setTimeout(atendido, 5600);
     return () => { clearInterval(timers.current.iv); clearTimeout(timers.current.to); };
