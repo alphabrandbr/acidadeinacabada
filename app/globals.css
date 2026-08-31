@@ -315,9 +315,15 @@ html[data-atendido="1"] .cortina{display:none}
   .faixa-acao{gap:1.6rem}
 }
 
-/* ── funil mobile: preço e botões logo depois do banner; capa menor ── */
+/* ── funil mobile: capa → preço e botões → destaques ── */
 @media(max-width:860px){
-  .faixa-acao{order:-1;padding-top:2.4rem}
-  .faixa-grid{padding-top:.4rem}
-  .objeto{max-width:230px}
+  .faixa-grid{display:contents}
+  .objeto{order:1;align-self:center;margin-top:2rem;max-width:240px;
+    padding:0 clamp(1.2rem,5vw,2.5rem)}
+  .faixa-acao{order:2;padding-top:2.2rem}
+  .destaques-bloco{order:3;align-self:center;width:100%;max-width:680px;
+    padding:0 clamp(1.2rem,5vw,2.5rem) clamp(2.2rem,5vw,3.2rem)}
+}
+@media(max-width:560px){
+  .destaques{margin:0 auto}
 }
