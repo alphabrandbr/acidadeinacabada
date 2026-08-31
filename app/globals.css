@@ -246,3 +246,12 @@ footer a:hover{text-decoration:underline}
 /* título acima dos três destaques */
 .destaques-bloco h2{margin-bottom:1.5rem}
 @media(max-width:560px){.destaques-bloco h2{text-align:center}}
+
+/* frase de abertura da seção dos 42 em escala de manchete */
+.secao-42 .corpo p.frase{
+  font-size:clamp(1.5rem,2.8vw,2.1rem);
+  line-height:1.25;
+  font-weight:600;
+  letter-spacing:-.01em;
+  margin-bottom:1.4rem;
+}
