@@ -45,7 +45,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${fraunces.variable} ${lora.variable} ${maquina.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('dta-atendido'))document.documentElement.setAttribute('data-atendido','1')}catch(e){}",
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
