@@ -1,5 +1,10 @@
 .DS_Store
-.vercel
 node_modules
+.next
+out
+.vercel
 .env
-.env.local
+.env.*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
