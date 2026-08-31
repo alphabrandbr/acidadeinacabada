@@ -255,3 +255,9 @@ footer a:hover{text-decoration:underline}
   letter-spacing:-.01em;
   margin-bottom:1.4rem;
 }
+
+/* grifo do "apenas" na frase dos 42 */
+.secao-42 .corpo p.frase em{
+  font-style:italic;
+  color:var(--lampiao);
+}

@@ -127,7 +127,7 @@ export default async function Pagina() {
           <div>
             <h2>Edição impressa · tiragem única</h2>
             <div className="corpo">
-              <p className="frase">Serão quarenta e dois exemplares impressos. Um único lote, numerado à mão, sem reimpressão.</p>
+              <p className="frase">Serão <em>apenas</em> quarenta e dois exemplares impressos. Um único lote, numerado à mão, sem reimpressão.</p>
               <p>O número não é aleatório. Quem leu o livro entende, e quem ainda não leu vai entender na primeira página.</p>
               <p>A lista ao lado não cobra nada e não reserva nada em definitivo. Ela só define a ordem em que o Departamento entra em contato quando os exemplares ficarem prontos.</p>
             </div>
