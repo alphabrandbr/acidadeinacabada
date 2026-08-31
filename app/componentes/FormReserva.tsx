@@ -79,7 +79,7 @@ export function FormReserva({ totalInicial }: Props) {
 
       {estado.fase === "protocolado" ? (
         <p className="msg ok">
-          {estado.jaConstava ? "REQUERIMENTO JÁ CONSTAVA." : "REQUERIMENTO PROTOCOLADO."}
+          {estado.jaConstava ? "SEU REQUERIMENTO JÁ CONSTA NA BASE." : "REQUERIMENTO PROTOCOLADO."}
           <br />
           Protocolo nº {pad(estado.posicao)}
           {estado.posicao > TIRAGEM ? " · lista do segundo lote." : " · consta em nossos arquivos."}
