@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { headers } from "next/headers";
 import { contarInscritos, registrarVisita } from "@/lib/db";
-import { LINK_AMAZON, PRECO_EBOOK, TIRAGEM } from "@/lib/config";
+import { LINK_AMAZON, PRECO_EBOOK, SENHA_BASE, TIRAGEM } from "@/lib/config";
 import { BotaoAmazon } from "./componentes/BotaoAmazon";
 import { FormReserva } from "./componentes/FormReserva";
 import { Cortina } from "./componentes/Cortina";
@@ -18,9 +19,11 @@ const Seta = () => (
 );
 
 export default async function Pagina() {
-  const [total, visita] = await Promise.all([contarInscritos(), registrarVisita()]);
+  const h = await headers();
+  const ip = (h.get("x-forwarded-for") ?? "").split(",")[0].trim() || h.get("x-real-ip") || "";
+  const [total, visita] = await Promise.all([contarInscritos(), registrarVisita(ip || null)]);
   const restantes = total === null ? null : Math.max(0, TIRAGEM - total);
-  const senha = visita ?? 214;
+  const senha = visita ?? SENHA_BASE;
 
   return (
     <>
