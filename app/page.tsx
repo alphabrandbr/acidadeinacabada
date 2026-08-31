@@ -44,7 +44,9 @@ export default async function Pagina() {
             <Image src={capa} alt="A Cidade Inacabada, edição impressa" sizes="(max-width: 860px) 80vw, 300px" />
           </div>
 
-          <div className="destaques">
+          <div className="destaques-bloco">
+            <h2>Do que este livro é feito</h2>
+            <div className="destaques">
             <div className="destaque-item">
               <div className="icone">
                 <svg viewBox="0 0 24 24"><path d="M12 6.5C10.5 5 8.5 4.5 6 4.5H3v14h3c2.5 0 4.5.5 6 2 1.5-1.5 3.5-2 6-2h3v-14h-3c-2.5 0-4.5.5-6 2z" /><path d="M12 6.5v14" /></svg>
@@ -74,6 +76,7 @@ export default async function Pagina() {
                 <p>A pergunta nunca foi como terminar as coisas. É por que a gente começa. E o livro responde sem dar lição em ninguém.</p>
               </div>
             </div>
+</div>
           </div>
         </div>
 

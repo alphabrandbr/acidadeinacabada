@@ -242,3 +242,7 @@ footer a:hover{text-decoration:underline}
 .relatorio td.data{font-family:var(--maquina);font-size:.72rem;color:var(--cinza);white-space:nowrap}
 .relatorio .vazio{text-align:center;font-family:var(--maquina);font-size:.72rem;color:var(--cinza);padding:2rem}
 .relatorio .tabela-scroll{overflow-x:auto}
+
+/* título acima dos três destaques */
+.destaques-bloco h2{margin-bottom:1.5rem}
+@media(max-width:560px){.destaques-bloco h2{text-align:center}}
