@@ -61,7 +61,7 @@ img{max-width:100%;display:block;height:auto}
 .botao:disabled{opacity:.6;cursor:wait;transform:none}
 
 /* ══════════ FAIXA DOS OBJETOS ══════════ */
-.faixa{background:var(--papel-claro);border-bottom:1px solid var(--linha)}
+.faixa{background:var(--papel-claro);border-bottom:1px solid var(--linha);display:flex;flex-direction:column}
 .faixa-grid{
   max-width:1180px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.5rem) clamp(2.2rem,5vw,3.2rem);
   display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);
@@ -313,4 +313,11 @@ html[data-atendido="1"] .cortina{display:none}
   .botao-marcado{width:100%}
   .botao-marcado .botao{width:100%;max-width:340px;text-align:center;margin:0 auto}
   .faixa-acao{gap:1.6rem}
+}
+
+/* ── funil mobile: preço e botões logo depois do banner; capa menor ── */
+@media(max-width:860px){
+  .faixa-acao{order:-1;padding-top:2.4rem}
+  .faixa-grid{padding-top:.4rem}
+  .objeto{max-width:230px}
 }
