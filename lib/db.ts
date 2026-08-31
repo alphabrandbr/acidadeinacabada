@@ -36,6 +36,12 @@ async function db(): Promise<Sql | null> {
           criado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
         )
       `;
+      await sql`
+        CREATE TABLE IF NOT EXISTS contadores (
+          nome  TEXT PRIMARY KEY,
+          valor BIGINT NOT NULL DEFAULT 0
+        )
+      `;
     })().catch((err) => {
       schemaPronto = null;
       throw err;
@@ -119,4 +125,25 @@ export async function listarInscritos(): Promise<Inscrito[]> {
     ORDER BY id
   `) as Inscrito[];
   return rows;
+}
+
+/**
+ * Conta uma visita e devolve a senha do painel. A contagem nasce em 214
+ * (o Departamento já tinha atendido o Distrito inteiro antes do site).
+ * Null quando o banco não está configurado ou falhou.
+ */
+export async function registrarVisita(): Promise<number | null> {
+  try {
+    const sql = await db();
+    if (!sql) return null;
+    const rows = (await sql`
+      INSERT INTO contadores (nome, valor) VALUES ('visitas', 215)
+      ON CONFLICT (nome) DO UPDATE SET valor = contadores.valor + 1
+      RETURNING valor::int AS valor
+    `) as { valor: number }[];
+    return rows[0]?.valor ?? null;
+  } catch (err) {
+    console.error("registrarVisita:", err);
+    return null;
+  }
 }

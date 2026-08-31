@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { contarInscritos } from "@/lib/db";
+import { contarInscritos, registrarVisita } from "@/lib/db";
 import { LINK_AMAZON, PRECO_EBOOK, TIRAGEM } from "@/lib/config";
 import { BotaoAmazon } from "./componentes/BotaoAmazon";
 import { FormReserva } from "./componentes/FormReserva";
+import { Cortina } from "./componentes/Cortina";
 import hero from "@/public/hero_page.jpg";
 import capa from "@/public/capa_livro.png";
 import autor from "@/public/foto-autor.png";
@@ -17,14 +18,16 @@ const Seta = () => (
 );
 
 export default async function Pagina() {
-  const total = await contarInscritos();
+  const [total, visita] = await Promise.all([contarInscritos(), registrarVisita()]);
   const restantes = total === null ? null : Math.max(0, TIRAGEM - total);
+  const senha = visita ?? 214;
 
   return (
     <>
+      <Cortina senha={senha} />
       <div className="painel">
         Departamento de Términos e Aberturas &nbsp;·&nbsp; Guichê <span className="num">08</span>
-        &nbsp;·&nbsp; senha <span className="num">214</span> <span className="pisca">▮</span>
+        &nbsp;·&nbsp; senha <span className="num">{senha}</span> <span className="pisca">▮</span>
       </div>
 
       {/* ═══════════════ HERO ═══════════════ */}
