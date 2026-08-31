@@ -321,6 +321,7 @@ html[data-atendido="1"] .cortina{display:none}
   .objeto{order:1;align-self:center;margin-top:2rem;max-width:240px;
     padding:0 clamp(1.2rem,5vw,2.5rem)}
   .faixa-acao{order:2;padding-top:2.2rem}
+  .faixa-acao .nota{display:none}
   .destaques-bloco{order:3;align-self:center;width:100%;max-width:680px;
     padding:0 clamp(1.2rem,5vw,2.5rem) clamp(2.2rem,5vw,3.2rem)}
 }
