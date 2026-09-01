@@ -84,8 +84,6 @@ img{max-width:100%;display:block;height:auto}
   display:flex;gap:1.4rem;align-items:center;justify-content:center;flex-wrap:wrap;
   text-align:center;
 }
-.faixa-acao .nota{font-family:var(--maquina);font-size:.62rem;letter-spacing:.1em;
-  line-height:2;color:var(--cinza);text-transform:uppercase}
 .faixa-botoes{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;align-items:flex-end}
 
 /* etiqueta com seta em cima dos botões */
@@ -321,7 +319,6 @@ html[data-atendido="1"] .cortina{display:none}
   .objeto{order:1;align-self:center;margin-top:2rem;max-width:240px;
     padding:0 clamp(1.2rem,5vw,2.5rem)}
   .faixa-acao{order:2;padding-top:2.2rem}
-  .faixa-acao .nota{display:none}
   .destaques-bloco{order:3;align-self:center;width:100%;max-width:680px;
     padding:0 clamp(1.2rem,5vw,2.5rem) clamp(2.2rem,5vw,3.2rem)}
 }
@@ -341,7 +338,6 @@ html[data-atendido="1"] .cortina{display:none}
 .faixa .destaque-item h3{color:var(--papel)}
 .faixa .destaque-item p{color:rgba(246,239,224,.86)}
 .faixa .objeto img{filter:drop-shadow(0 22px 34px rgba(0,0,0,.5))}
-.faixa .nota{color:rgba(246,239,224,.68)}
 .faixa .etiqueta{color:var(--lampiao)}
 .faixa .etiqueta svg{stroke:var(--lampiao)}
 .faixa .botao{background:#fff;color:var(--vinho)}
