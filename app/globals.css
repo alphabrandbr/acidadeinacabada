@@ -350,6 +350,7 @@ html[data-atendido="1"] .cortina{display:none}
 /* ── desktop: botões dentro do grid, sob a coluna dos destaques ── */
 @media(min-width:861px){
   .faixa-grid{row-gap:2.4rem}
+  .destaques-bloco{padding-top:clamp(2.4rem,4vw,3.6rem)}
   .objeto{grid-row:1 / span 2}
   .faixa-acao{grid-column:2;max-width:none;margin:0;padding:0;justify-content:flex-start;text-align:left}
   .faixa-botoes{justify-content:flex-start}
