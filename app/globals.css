@@ -344,9 +344,9 @@ html[data-atendido="1"] .cortina{display:none}
 .faixa .nota{color:rgba(246,239,224,.68)}
 .faixa .etiqueta{color:var(--lampiao)}
 .faixa .etiqueta svg{stroke:var(--lampiao)}
-.faixa .botao{background:var(--papel);color:var(--vinho)}
+.faixa .botao{background:#fff;color:var(--vinho)}
 .faixa .botao:hover{background:var(--tinta);color:#fdf8ec}
 .faixa .botao.escuro{background:var(--tinta);color:#fdf8ec}
 .faixa .botao.escuro:hover{background:var(--papel);color:var(--vinho)}
-.faixa .botao.apagado{opacity:.45}
-.faixa .botao.apagado:hover{background:var(--papel);color:var(--vinho)}
+.faixa .botao.apagado{opacity:1;background:#fff;color:var(--vinho)}
+.faixa .botao.apagado:hover{background:#fff;color:var(--vinho)}
