@@ -72,7 +72,6 @@ export function FormReserva({ totalInicial }: Props) {
       <div className="cabecalho">
         <div className="org">Departamento de Términos e Aberturas</div>
         <div className="tit">Requerimento de Reserva</div>
-        <div className="lote">Livro físico · lote único · {TIRAGEM} exemplares</div>
       </div>
 
       <Contador total={total} />
