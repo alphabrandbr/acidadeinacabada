@@ -163,19 +163,13 @@ h2{font-family:var(--maquina);font-size:.7rem;letter-spacing:.26em;text-transfor
 .secao-42 .corpo{max-width:46ch}
 .secao-42 .corpo p{color:#cfc2aa}
 .secao-42 .corpo p.frase{color:#f6efe0}
-.secao-42 .form-card{max-width:none;box-shadow:0 22px 44px -22px rgba(0,0,0,.65)}
+.secao-42 .form-card{max-width:none;box-shadow:0 22px 44px -22px rgba(0,0,0,.65);transform:rotate(-.6deg)}
 
 /* ══════════ formulário ══════════ */
 .form-card{
   background:var(--papel-cartao);border:1px solid var(--linha);
   padding:clamp(1.6rem,4.5vw,2.6rem);position:relative;max-width:640px;
   box-shadow:0 10px 24px -18px rgba(36,31,27,.5);
-}
-.form-card::before{
-  content:"";position:absolute;top:-11px;left:50%;margin-left:-9px;width:18px;height:18px;
-  border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#c9614f 0%,var(--vinho) 45%,#5f1c1c 100%);
-  box-shadow:0 2px 3px rgba(36,31,27,.35),inset 0 -2px 3px rgba(0,0,0,.25);
 }
 .form-card .cabecalho{font-family:var(--maquina);text-align:center;
   border-bottom:1px solid var(--linha);padding-bottom:1rem;margin-bottom:1.5rem}
@@ -354,4 +348,22 @@ html[data-atendido="1"] .cortina{display:none}
   .objeto{grid-row:1 / span 2}
   .faixa-acao{grid-column:2;max-width:none;margin:0;padding:0;justify-content:flex-start;text-align:left}
   .faixa-botoes{justify-content:flex-start}
+}
+
+/* ══════════ fita crepe do mural ══════════ */
+.fita{
+  position:absolute;width:118px;height:30px;pointer-events:none;
+  background:rgba(238,223,188,.78);
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 2px,transparent 2px 6px);
+  box-shadow:0 1px 2px rgba(0,0,0,.22),inset 0 0 0 1px rgba(255,255,255,.18);
+  clip-path:polygon(0 8%,2% 0,100% 4%,97% 34%,100% 62%,98% 100%,1% 96%,3% 60%,0 30%);
+  opacity:.94;
+}
+.fita-tl{top:-8px;left:-42px;transform:rotate(-40deg)}
+.fita-tr{top:-8px;right:-42px;transform:rotate(40deg)}
+.fita-br{bottom:-13px;right:34px;width:96px;transform:rotate(-7deg)}
+@media(max-width:480px){
+  .fita{width:92px;height:24px}
+  .fita-tl{left:-34px}.fita-tr{right:-34px}
+  .fita-br{right:22px;width:76px}
 }

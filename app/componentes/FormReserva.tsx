@@ -69,6 +69,9 @@ export function FormReserva({ totalInicial }: Props) {
 
   return (
     <form className="form-card" id="form" onSubmit={enviar}>
+      <span className="fita fita-tl" aria-hidden="true" />
+      <span className="fita fita-tr" aria-hidden="true" />
+      <span className="fita fita-br" aria-hidden="true" />
       <div className="cabecalho">
         <div className="org">Departamento de Términos e Aberturas</div>
         <div className="tit">Requerimento de Reserva</div>
