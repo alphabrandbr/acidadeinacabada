@@ -346,3 +346,11 @@ html[data-atendido="1"] .cortina{display:none}
 .faixa .botao.escuro:hover{background:var(--papel);color:var(--vinho)}
 .faixa .botao.apagado{opacity:1;background:#fff;color:var(--vinho)}
 .faixa .botao.apagado:hover{background:#fff;color:var(--vinho)}
+
+/* ── desktop: botões dentro do grid, sob a coluna dos destaques ── */
+@media(min-width:861px){
+  .faixa-grid{row-gap:2.4rem}
+  .objeto{grid-row:1 / span 2}
+  .faixa-acao{grid-column:2;max-width:none;margin:0;padding:0;justify-content:flex-start;text-align:left}
+  .faixa-botoes{justify-content:flex-start}
+}

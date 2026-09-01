@@ -84,11 +84,10 @@ export default async function Pagina() {
                 <p>A pergunta nunca foi como terminar as coisas. É por que a gente começa. E o livro responde sem dar lição em ninguém.</p>
               </div>
             </div>
-</div>
+            </div>
           </div>
-        </div>
 
-        <div className="faixa-acao">
+          <div className="faixa-acao">
           <div className="faixa-botoes">
             <div className="botao-marcado">
               <span className="etiqueta">Ebook <Seta /></span>
@@ -99,6 +98,7 @@ export default async function Pagina() {
               <a className="botao escuro" href="#form">Entrar na fila dos {TIRAGEM}</a>
             </div>
           </div>
+        </div>
         </div>
       </div>
 
