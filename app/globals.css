@@ -328,3 +328,25 @@ html[data-atendido="1"] .cortina{display:none}
 @media(max-width:560px){
   .destaques{margin:0 auto}
 }
+
+/* ══════════ faixa dos objetos em bordô ══════════ */
+.faixa{
+  background:var(--vinho);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .9 0 0 0 0 .8 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  border-bottom:none;
+}
+.faixa h2{color:rgba(246,239,224,.62)}
+.faixa .icone{border-color:var(--papel)}
+.faixa .icone svg{stroke:var(--papel)}
+.faixa .destaque-item h3{color:var(--papel)}
+.faixa .destaque-item p{color:rgba(246,239,224,.86)}
+.faixa .objeto img{filter:drop-shadow(0 22px 34px rgba(0,0,0,.5))}
+.faixa .nota{color:rgba(246,239,224,.68)}
+.faixa .etiqueta{color:var(--lampiao)}
+.faixa .etiqueta svg{stroke:var(--lampiao)}
+.faixa .botao{background:var(--papel);color:var(--vinho)}
+.faixa .botao:hover{background:var(--tinta);color:#fdf8ec}
+.faixa .botao.escuro{background:var(--tinta);color:#fdf8ec}
+.faixa .botao.escuro:hover{background:var(--papel);color:var(--vinho)}
+.faixa .botao.apagado{opacity:.45}
+.faixa .botao.apagado:hover{background:var(--papel);color:var(--vinho)}
