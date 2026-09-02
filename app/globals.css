@@ -295,15 +295,9 @@ html[data-atendido="1"] .cortina{display:none}
 
 
 /* ══════════ ajustes mobile ══════════ */
-/* celular: banner recortado na cidade, com o título transparente sobreposto */
-.hero-banner{position:relative}
-.hero-titulo{display:none}
+/* banner um pouco maior no celular: corta só textura das pontas */
 @media(max-width:600px){
-  .hero-banner .hero-arte{height:62vw;object-fit:cover;object-position:100% center}
-  .hero-titulo{
-    display:block;position:absolute;left:5vw;top:8%;width:46vw;height:auto;
-    filter:drop-shadow(0 0 10px rgba(246,239,224,.95)) drop-shadow(0 0 3px rgba(246,239,224,.9));
-  }
+  .hero-banner img{height:40vw;object-fit:cover;object-position:32% center}
 }
 /* botões confortáveis de dedo, empilhados */
 @media(max-width:480px){

@@ -8,7 +8,6 @@ import { Cortina } from "./componentes/Cortina";
 import hero from "@/public/hero_page.jpg";
 import capa from "@/public/capa_livro.png";
 import autor from "@/public/foto-autor.png";
-import titulo from "@/public/titulo_transparente.png";
 
 export const dynamic = "force-dynamic";
 
@@ -39,13 +38,11 @@ export default async function Pagina() {
       {/* ═══════════════ HERO ═══════════════ */}
       <div className="hero-banner">
         <Image
-          className="hero-arte"
           src={hero}
           alt="A Cidade Inacabada — algumas cidades são feitas de concreto, outras de histórias que nunca acabam"
           priority
           sizes="100vw"
         />
-        <Image className="hero-titulo" src={titulo} alt="" aria-hidden priority sizes="46vw" />
       </div>
 
       {/* ═══════════════ FAIXA DOS OBJETOS ═══════════════ */}
