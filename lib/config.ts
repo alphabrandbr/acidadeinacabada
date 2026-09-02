@@ -2,7 +2,7 @@
    QUANDO O EBOOK SAIR NA AMAZON, COLE O LINK AQUI DENTRO
    DAS ASPAS. É a única coisa que precisa mudar na página.
    ═══════════════════════════════════════════════════════════ */
-export const LINK_AMAZON = "";
+export const LINK_AMAZON = "https://www.amazon.com.br/dp/B0HHHDG5WH";
 
 /** Tamanho do lote da edição impressa. */
 export const TIRAGEM = 42;
