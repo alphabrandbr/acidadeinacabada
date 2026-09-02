@@ -104,12 +104,6 @@ export function FormReserva({ totalInicial }: Props) {
         </>
       )}
 
-      <div className="rodape-form">
-        O requerimento não gera cobrança nem compromisso de compra.<br />
-        O Departamento entra em contato uma única vez, quando o lote ficar pronto,<br />
-        na ordem em que os requerimentos foram protocolados.<br />
-        Não há mala direta. Não há penalidade. Não há pegadinha.
-      </div>
     </form>
   );
 }

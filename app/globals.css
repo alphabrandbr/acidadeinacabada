@@ -199,8 +199,6 @@ input[type=text],input[type=email]{
   padding:.5rem .2rem;margin-bottom:1.4rem;outline:none;transition:border-color .15s ease;
 }
 input:focus{border-bottom-color:var(--vinho)}
-.rodape-form{font-family:var(--maquina);font-size:.6rem;line-height:1.95;color:var(--cinza);
-  border-top:1px solid var(--linha);margin-top:1.4rem;padding-top:1rem}
 .msg{font-family:var(--maquina);font-size:.72rem;line-height:1.8;margin-top:1rem;display:none}
 .msg.ok{display:block;color:var(--vinho)}
 .msg.erro{display:block;color:#a4402f}
