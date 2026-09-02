@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Lora, Special_Elite } from "next/font/google";
 import "./globals.css";
 
@@ -22,6 +22,13 @@ const maquina = Special_Elite({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.acidadeinacabada.com.br";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

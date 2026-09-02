@@ -13,14 +13,14 @@
   --maquina:var(--font-maquina),'Courier New',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   background:var(--papel);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.48 0 0 0 0 0.42 0 0 0 0 0.33 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   color:var(--tinta);
   font-family:var(--texto);
   line-height:1.75;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 .wrap{max-width:1100px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.5rem)}
 img{max-width:100%;display:block;height:auto}
