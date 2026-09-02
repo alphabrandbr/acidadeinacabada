@@ -5,7 +5,7 @@ import { SENHA_BASE, TIRAGEM } from "@/lib/config";
 import { BotaoAmazon } from "./componentes/BotaoAmazon";
 import { FormReserva } from "./componentes/FormReserva";
 import { Cortina } from "./componentes/Cortina";
-import hero from "@/public/hero_page.jpg";
+import hero from "@/public/hero.png";
 import capa from "@/public/capa_livro.png";
 import autor from "@/public/foto-autor.png";
 
