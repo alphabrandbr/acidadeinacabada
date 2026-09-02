@@ -295,7 +295,7 @@ html[data-atendido="1"] .cortina{display:none}
 /* ══════════ ajustes mobile ══════════ */
 /* celular: só a cidade no banner, grande, com a capa sobreposta */
 @media(max-width:600px){
-  .hero-banner img{height:74vw;object-fit:cover;object-position:85% center}
+  .hero-banner img{height:64vw;object-fit:cover;object-position:85% center}
 }
 /* botões confortáveis de dedo, empilhados */
 @media(max-width:480px){
@@ -368,5 +368,6 @@ html[data-atendido="1"] .cortina{display:none}
 
 /* capa estourando sobre o banner no celular (a regra vem por último pra vencer o bloco de 860px) */
 @media(max-width:600px){
-  .objeto{max-width:min(62vw,280px);margin-top:-20vw;padding:0}
+  .objeto{max-width:min(54vw,250px);margin-top:-22vw;padding:0}
+  .faixa-acao{padding-top:1.2rem}
 }
