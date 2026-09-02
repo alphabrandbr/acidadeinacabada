@@ -6,7 +6,7 @@ import { BotaoAmazon } from "./componentes/BotaoAmazon";
 import { FormReserva } from "./componentes/FormReserva";
 import { Cortina } from "./componentes/Cortina";
 import hero from "@/public/hero.png";
-import capa from "@/public/capa_livro.png";
+import capa from "@/public/mockup.png";
 import autor from "@/public/foto-autor.png";
 
 export const dynamic = "force-dynamic";
