@@ -7,7 +7,7 @@ export const LINK_AMAZON = "https://www.amazon.com.br/dp/B0HHHDG5WH";
 /** Tamanho do lote da edição impressa. */
 export const TIRAGEM = 42;
 
-export const PRECO_EBOOK = "R$ 1,99";
+export const PRECO_EBOOK = "R$ 9,90";
 
 /** A senha do painel começa daqui e soma um por visitante único (IP). */
 export const SENHA_BASE = 100;
