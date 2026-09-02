@@ -41,7 +41,8 @@ export default async function Pagina() {
           src={hero}
           alt="A Cidade Inacabada — algumas cidades são feitas de concreto, outras de histórias que nunca acabam"
           priority
-          sizes="100vw"
+          quality={90}
+          sizes="(max-width: 600px) 205vw, 100vw"
         />
       </div>
 
