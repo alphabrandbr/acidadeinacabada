@@ -28,8 +28,8 @@ export function Cortina({ senha }: { senha: number }) {
     html.classList.add("lavando");
     setFase("saindo");
     timers.current = [
-      setTimeout(() => setFase("fim"), 850),
-      setTimeout(() => html.classList.remove("lavando"), 1800),
+      setTimeout(() => setFase("fim"), 1150),
+      setTimeout(() => html.classList.remove("lavando"), 2800),
     ];
   }
 
