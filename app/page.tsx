@@ -27,6 +27,7 @@ export default async function Pagina() {
   return (
     <>
       <Cortina senha={senha} />
+      <div className="palco">
       <div className="painel">
         <span className="painel-org">Departamento de Términos e Aberturas</span>
         <span className="painel-sep">·</span>
@@ -165,6 +166,7 @@ export default async function Pagina() {
         A Cidade Inacabada · Marcelinho · 2026<br />
         Todo começo é protocolado automaticamente, sem custo e sem julgamento.
       </footer>
+      </div>
     </>
   );
 }
