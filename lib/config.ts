@@ -9,5 +9,8 @@ export const TIRAGEM = 42;
 
 export const PRECO_EBOOK = "R$ 1,99";
 
+/** Preço "de" riscado no botão (promoção). Deixe "" para exibir só o preço atual. */
+export const PRECO_EBOOK_DE = "R$ 9,90";
+
 /** A senha do painel começa daqui e soma um por visitante único (IP). */
 export const SENHA_BASE = 100;

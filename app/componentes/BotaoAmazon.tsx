@@ -1,13 +1,14 @@
 "use client";
 
-import { LINK_AMAZON, PRECO_EBOOK } from "@/lib/config";
+import { LINK_AMAZON, PRECO_EBOOK, PRECO_EBOOK_DE } from "@/lib/config";
 
 /** Botão do ebook. Com LINK_AMAZON vazio, fica apagado e leva ao formulário. */
 export function BotaoAmazon() {
   if (LINK_AMAZON) {
     return (
       <a className="botao" href={LINK_AMAZON} target="_blank" rel="noopener">
-        Compre agora na Amazon · {PRECO_EBOOK}
+        Compre agora na Amazon ·{" "}
+        {PRECO_EBOOK_DE && <s>{PRECO_EBOOK_DE}</s>} <b>{PRECO_EBOOK}</b>
       </a>
     );
   }

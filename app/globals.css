@@ -59,6 +59,8 @@ img{max-width:100%;display:block;height:auto}
 .botao.apagado{opacity:.4;cursor:not-allowed}
 .botao.apagado:hover{background:var(--vinho);transform:none}
 .botao:disabled{opacity:.6;cursor:wait;transform:none}
+.botao s{opacity:.5;text-decoration:line-through;margin-right:.2em}
+.botao b{font-weight:400}
 
 /* ══════════ FAIXA DOS OBJETOS ══════════ */
 .faixa{background:var(--papel-claro);border-bottom:1px solid var(--linha);display:flex;flex-direction:column}
