@@ -81,6 +81,20 @@ Cola o link dentro das aspas, salva, `git push`. A Vercel publica sozinha. O bot
 
 ---
 
+## E-mail de confirmação (manual)
+
+O template fica em `emails/confirmacao-reserva.html` e sai de `departamento@acidadeinacabada.com.br` (domínio verificado no Resend — a imagem do topo renderiza direto). Precisa do `RESEND_API_KEY` no `.env.local`.
+
+```
+cd site-lancamento
+node --env-file=.env.local scripts/enviar-confirmacao.mjs <numero> "<nome>" <email> [tratamento]
+```
+
+Exemplo: `node --env-file=.env.local scripts/enviar-confirmacao.mjs 016 "Tatiane Nobre" tatianenobre@yahoo.com.br`
+O tratamento padrão é "Olá"; passa "Prezada"/"Prezado" se quiser. `--teste` manda pra contato@marcelinho.com.br.
+
+---
+
 ## Avisar a lista
 
 Se o Resend estiver configurado, cada inscrito também entra na audiência de lá, e dá pra mandar o aviso em **Broadcasts**. Se não, baixa o CSV e usa onde preferir. Sugestão de assunto, no tom da casa:
