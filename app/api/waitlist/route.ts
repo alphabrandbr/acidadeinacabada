@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { bancoConfigurado, contarInscritos, inscrever } from "@/lib/db";
-import { registrarNoResend } from "@/lib/resend";
+import { enviarConfirmacao, registrarNoResend } from "@/lib/resend";
 import { TIRAGEM } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
@@ -34,6 +34,7 @@ export async function POST(req: Request) {
   try {
     const resultado = await inscrever(nome, email);
     if (!resultado.jaConstava) {
+      await enviarConfirmacao(nome, email, resultado.posicao);
       await registrarNoResend(nome, email, resultado.posicao);
     }
     return NextResponse.json({ ok: true, ...resultado });
