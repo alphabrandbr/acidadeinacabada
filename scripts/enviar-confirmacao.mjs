@@ -67,7 +67,7 @@ acidadeinacabada.com.br`;
 const r = await fetch(`${API}/emails`, {
   method: "POST",
   headers: { Authorization: `Bearer ${chave}`, "Content-Type": "application/json" },
-  body: JSON.stringify({ from: DE, to: [email], subject: assunto, html, text: texto }),
+  body: JSON.stringify({ from: DE, to: [email], reply_to: "marcelinho.eu@gmail.com", subject: assunto, html, text: texto }),
 });
 const resp = await r.json();
 if (resp.id) {
