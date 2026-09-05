@@ -24,6 +24,11 @@ export default function Diario() {
     ...todas.filter((p) => p.numero === 0),
     ...todas.filter((p) => p.numero > 0).sort((a, b) => b.numero - a.numero),
   ];
+  const indice = [
+    ...todas.filter((p) => p.numero === 0),
+    ...todas.filter((p) => p.numero > 0).sort((a, b) => a.numero - b.numero),
+  ];
+
   return (
     <>
       <div className="painel">
@@ -35,8 +40,22 @@ export default function Diario() {
           <div className="tit">Diário Oficial</div>
         </div>
 
+        <div className="diario-grid">
+          <aside className="diario-menu">
+            <div className="menu-tit">Publicações</div>
+            <nav>
+              {indice.map((p) => (
+                <a key={p.numero} href={`#p-${p.numero}`}>
+                  <span className="rot">{p.rotulo ?? `Portaria nº ${p.numero}`}</span>
+                  <span className="tt">{p.titulo}</span>
+                </a>
+              ))}
+            </nav>
+          </aside>
+
+          <div className="diario-corpo">
         {lista.map((p) => (
-          <article className="portaria" key={p.numero}>
+          <article className="portaria" key={p.numero} id={`p-${p.numero}`}>
             <header>
               <span className="num">{p.rotulo ?? `Portaria nº ${p.numero}`}</span>
               <span className="data">{fmtData(p.data)}</span>
@@ -47,6 +66,9 @@ export default function Diario() {
             ))}
           </article>
         ))}
+
+          </div>
+        </div>
 
         <p className="voltar"><a href="/">← Voltar à página do livro</a></p>
       </main>
