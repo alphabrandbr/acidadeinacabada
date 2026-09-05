@@ -2,6 +2,7 @@ import Image from "next/image";
 import { headers } from "next/headers";
 import { contarInscritos, registrarVisita } from "@/lib/db";
 import { SENHA_BASE, TIRAGEM } from "@/lib/config";
+import { DEPOIMENTOS } from "@/lib/depoimentos";
 import { BotaoAmazon } from "./componentes/BotaoAmazon";
 import { FormReserva } from "./componentes/FormReserva";
 import { Cortina } from "./componentes/Cortina";
@@ -122,13 +123,25 @@ export default async function Pagina() {
 
       <hr className="divisor" />
 
+      {/* ═══════════════ O QUE DIZEM ═══════════════ */}
+      <div className="dizem">
+        <h2>O que dizem</h2>
+        {DEPOIMENTOS.map((d, i) => (
+          <blockquote key={i}>
+            <div className="estrelas" aria-label={`${d.estrelas} estrelas`}>{"★".repeat(d.estrelas)}</div>
+            <p>“{d.texto}”</p>
+            <cite>{d.fonte}</cite>
+          </blockquote>
+        ))}
+      </div>
+
       {/* ═══════════════ OS 42 ═══════════════ */}
       <div className="secao-42">
         <div className="grid">
           <div>
             <h2>Edição impressa · tiragem única</h2>
             <div className="corpo">
-              <p className="frase">Serão <em>apenas</em> quarenta e dois exemplares impressos. Um único lote, numerado à mão, sem reimpressão.</p>
+              <p className="frase">Serão <em>apenas</em> quarenta e dois exemplares numerados à mão e assinados. Um único lote, sem reimpressão.</p>
               <p>O número não é aleatório. Quem leu o livro entende, e quem ainda não leu vai entender na primeira página.</p>
               <p>A lista ao lado não cobra nada e não reserva nada em definitivo. Ela só define a ordem em que o Departamento entra em contato quando os exemplares ficarem prontos.</p>
             </div>
@@ -158,9 +171,10 @@ export default async function Pagina() {
       {/* ═══════════════ RODAPÉ ═══════════════ */}
       <footer>
         <div className="footer-cols">
-          <div>Romance<br />164 páginas</div>
-          <div>Ebook na Amazon<br />Impresso em tiragem única</div>
+          <div>Romance<br />140 páginas</div>
+          <div>Ebook na Amazon<br />Edição numerada de 42</div>
           <div>Acompanhe<br /><a href="https://instagram.com/versaoilustrada">@versaoilustrada</a></div>
+          <div>Registro<br /><a href="/diario">Diário Oficial</a></div>
         </div>
         A Cidade Inacabada · Marcelinho · 2026<br />
         Todo começo é protocolado automaticamente, sem custo e sem julgamento.
