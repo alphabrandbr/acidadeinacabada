@@ -18,16 +18,10 @@ const fmtData = (iso: string) =>
   new Date(iso + "T12:00:00-03:00").toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
 
 export default function Diario() {
-  // o Ato de Instalação (nº 0) fica sempre no topo; o resto, mais recente primeiro
+  // ordem cronológica: Ato de Instalação primeiro, depois as portarias em sequência
   const todas = portarias as Publicacao[];
-  const lista = [
-    ...todas.filter((p) => p.numero === 0),
-    ...todas.filter((p) => p.numero > 0).sort((a, b) => b.numero - a.numero),
-  ];
-  const indice = [
-    ...todas.filter((p) => p.numero === 0),
-    ...todas.filter((p) => p.numero > 0).sort((a, b) => a.numero - b.numero),
-  ];
+  const lista = [...todas].sort((a, b) => a.numero - b.numero);
+  const indice = lista;
 
   return (
     <>
