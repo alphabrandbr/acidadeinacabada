@@ -54,7 +54,7 @@ Fica registrado que o seu requerimento de reserva foi protocolado nesta data sob
 
 Consta em nossos arquivos. Não há cobrança, não há compromisso e não há prazo a cumprir da sua parte.
 
-O Departamento entra em contato uma única vez, quando o lote ficar pronto, na ordem em que os requerimentos foram recebidos.
+O Departamento entra em contato com atualizações sobre a Edição Impressa, na ordem em que os requerimentos foram recebidos.
 
 Até lá, nada precisa ser feito. É provavelmente a única fila do Brasil em que isso é verdade.
 
