@@ -33,7 +33,6 @@ export default function Diario() {
         <div className="cab">
           <div className="org">Boletim do Departamento</div>
           <div className="tit">Diário Oficial</div>
-          <div className="nota">Registro público das portarias. Quem está na fila dos 42 recebe por e-mail.</div>
         </div>
 
         {lista.map((p) => (
