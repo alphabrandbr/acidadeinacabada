@@ -35,13 +35,15 @@ const chave = (process.env.RESEND_API_KEY ?? "").trim();
 if (!chave && (enviar || teste)) { console.error("RESEND_API_KEY ausente no .env.local"); process.exit(1); }
 
 const num3 = String(p.numero).padStart(3, "0");
-const assunto = `Portaria nº ${p.numero} — ${p.titulo}`;
+const rotulo = p.rotulo ?? `Portaria nº ${p.numero}`;
+const rotuloCurto = p.rotulo ?? `Portaria nº ${num3}`;
+const assunto = `${rotulo} — ${p.titulo}`;
 const html = `<div style="background:#f6efe0;padding:24px 12px;font-family:Georgia,'Times New Roman',serif;color:#241f1b">
   <div style="max-width:600px;margin:0 auto;background:#fdfaf2;border:1px solid #ded2bb;padding:28px 32px 32px">
     <div style="text-align:center;border-bottom:1px solid #ded2bb;padding-bottom:14px;margin-bottom:24px;font-family:'Courier New',Courier,monospace">
       <div style="font-size:11px;letter-spacing:2px;color:#8a8178;text-transform:uppercase">Departamento de Términos e Aberturas</div>
       <div style="font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-top:6px">Boletim do Departamento</div>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8c2b2b;margin-top:9px">Portaria nº ${num3}</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8c2b2b;margin-top:9px">${rotuloCurto}</div>
     </div>
     <p style="margin:0 0 18px;font-family:'Courier New',Courier,monospace;font-size:15px;letter-spacing:.5px"><strong>${p.titulo}</strong></p>
     ${p.paragrafos.map((t) => `<p style="margin:0 0 16px;line-height:1.65">${t}</p>`).join("\n    ")}
@@ -53,7 +55,7 @@ const html = `<div style="background:#f6efe0;padding:24px 12px;font-family:Georg
     </div>
   </div>
 </div>`;
-const texto = `DEPARTAMENTO DE TÉRMINOS E ABERTURAS\nBoletim do Departamento · Portaria nº ${num3}\n\n${p.titulo}\n\n${p.paragrafos.join("\n\n")}\n\n— Otoniel, do Departamento\n\nVocê recebe este boletim porque consta na fila dos 42 (acidadeinacabada.com.br). Para não receber mais, é só responder avisando.`;
+const texto = `DEPARTAMENTO DE TÉRMINOS E ABERTURAS\nBoletim do Departamento · ${rotuloCurto}\n\n${p.titulo}\n\n${p.paragrafos.join("\n\n")}\n\n— Otoniel, do Departamento\n\nVocê recebe este boletim porque consta na fila dos 42 (acidadeinacabada.com.br). Para não receber mais, é só responder avisando.`;
 
 let destinatarios;
 if (teste) {
@@ -63,7 +65,7 @@ if (teste) {
   destinatarios = await sql`SELECT nome, email FROM fila_impresso ORDER BY id`;
 }
 
-console.log(`Portaria nº ${p.numero} — ${p.titulo}`);
+console.log(`${rotulo} — ${p.titulo}`);
 console.log(`Destinatários (${destinatarios.length}):`);
 for (const d of destinatarios) console.log(`  ${d.nome}  <${d.email}>`);
 

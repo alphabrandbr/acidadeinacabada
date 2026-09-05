@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import portarias from "@/portarias.json";
 
+type Publicacao = {
+  numero: number;
+  rotulo?: string;
+  data: string;
+  titulo: string;
+  paragrafos: string[];
+};
+
 export const metadata: Metadata = {
   title: "Diário Oficial — A Cidade Inacabada",
   description: "Arquivo das portarias do Departamento de Términos e Aberturas.",
@@ -10,7 +18,12 @@ const fmtData = (iso: string) =>
   new Date(iso + "T12:00:00-03:00").toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
 
 export default function Diario() {
-  const lista = [...portarias].sort((a, b) => b.numero - a.numero);
+  // o Ato de Instalação (nº 0) fica sempre no topo; o resto, mais recente primeiro
+  const todas = portarias as Publicacao[];
+  const lista = [
+    ...todas.filter((p) => p.numero === 0),
+    ...todas.filter((p) => p.numero > 0).sort((a, b) => b.numero - a.numero),
+  ];
   return (
     <>
       <div className="painel">
@@ -26,7 +39,7 @@ export default function Diario() {
         {lista.map((p) => (
           <article className="portaria" key={p.numero}>
             <header>
-              <span className="num">Portaria nº {p.numero}</span>
+              <span className="num">{p.rotulo ?? `Portaria nº ${p.numero}`}</span>
               <span className="data">{fmtData(p.data)}</span>
             </header>
             <h2>{p.titulo}</h2>
