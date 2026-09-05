@@ -42,7 +42,7 @@ export default async function Lista({ searchParams }: { searchParams: Promise<{ 
           <div className="tabela-scroll">
             <table>
               <thead>
-                <tr><th>Nº</th><th>Nome</th><th>E-mail</th><th>Protocolado em</th></tr>
+                <tr><th>Nº</th><th>Nome</th><th>E-mail</th><th>Protocolado em</th><th>Confirmação</th></tr>
               </thead>
               <tbody>
                 {inscritos.map((i) => (
@@ -51,6 +51,7 @@ export default async function Lista({ searchParams }: { searchParams: Promise<{ 
                     <td>{i.nome || <em style={{ color: "var(--cinza)" }}>(não informado)</em>}</td>
                     <td><a href={`mailto:${i.email}`}>{i.email}</a></td>
                     <td className="data">{fmtData(i.criado_em)}</td>
+                    <td className="data">{i.confirmado_em ? `✓ ${fmtData(i.confirmado_em)}` : "—"}</td>
                   </tr>
                 ))}
               </tbody>

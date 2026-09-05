@@ -8,6 +8,7 @@ export type Inscrito = {
   nome: string;
   email: string;
   criado_em: string;
+  confirmado_em: string | null;
 };
 
 type Sql = ReturnType<typeof neon>;
@@ -34,6 +35,15 @@ async function db(): Promise<Sql | null> {
           id        SERIAL PRIMARY KEY,
           nome      TEXT NOT NULL DEFAULT '',
           email     TEXT NOT NULL UNIQUE,
+          criado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        )
+      `;
+      await sql`
+        ALTER TABLE fila_impresso ADD COLUMN IF NOT EXISTS confirmado_em TIMESTAMPTZ
+      `;
+      await sql`
+        CREATE TABLE IF NOT EXISTS boletim (
+          email     TEXT PRIMARY KEY,
           criado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
         )
       `;
@@ -121,7 +131,8 @@ export async function listarInscritos(): Promise<Inscrito[]> {
       ROW_NUMBER() OVER (ORDER BY id)::int AS posicao,
       nome,
       email,
-      criado_em::text AS criado_em
+      criado_em::text AS criado_em,
+      confirmado_em::text AS confirmado_em
     FROM fila_impresso
     ORDER BY id
   `) as Inscrito[];
@@ -147,4 +158,27 @@ export async function registrarVisita(ip: string | null): Promise<number | null>
     console.error("registrarVisita:", err);
     return null;
   }
+}
+
+/** Marca que a confirmação de reserva foi enviada para este e-mail. */
+export async function marcarConfirmacaoEnviada(email: string) {
+  try {
+    const sql = await db();
+    if (!sql) return;
+    await sql`UPDATE fila_impresso SET confirmado_em = NOW() WHERE email = ${email}`;
+  } catch (err) {
+    console.error("marcarConfirmacaoEnviada:", err);
+  }
+}
+
+/** Assina o boletim do Diário Oficial. Devolve se já assinava. */
+export async function assinarBoletim(email: string): Promise<{ jaAssinava: boolean }> {
+  const sql = await db();
+  if (!sql) throw new Error("DATABASE_URL não configurada");
+  const ins = (await sql`
+    INSERT INTO boletim (email) VALUES (${email})
+    ON CONFLICT (email) DO NOTHING
+    RETURNING email
+  `) as { email: string }[];
+  return { jaAssinava: ins.length === 0 };
 }

@@ -62,7 +62,15 @@ if (teste) {
   destinatarios = [{ nome: "Marcelinho (teste)", email: "contato@marcelinho.com.br" }];
 } else {
   const sql = neon(process.env.DATABASE_URL);
-  destinatarios = await sql`SELECT nome, email FROM fila_impresso ORDER BY id`;
+  const fila = await sql`SELECT nome, email FROM fila_impresso ORDER BY id`;
+  const assinantes = await sql`SELECT email FROM boletim ORDER BY criado_em`;
+  const vistos = new Set();
+  destinatarios = [];
+  for (const d of [...fila, ...assinantes.map((a) => ({ nome: "Assinante do boletim", email: a.email }))]) {
+    if (vistos.has(d.email)) continue;
+    vistos.add(d.email);
+    destinatarios.push(d);
+  }
 }
 
 console.log(`${rotulo} — ${p.titulo}`);

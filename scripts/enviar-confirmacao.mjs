@@ -2,18 +2,21 @@
 /**
  * Envia o e-mail de confirmação de reserva (template emails/confirmacao-reserva.html)
  * pelo Resend, do remetente departamento@acidadeinacabada.com.br.
+ * Busca o inscrito na fila pelo número do protocolo, recusa reenvio para quem
+ * já recebeu (a menos que use --de-novo) e marca o envio no banco.
  *
  * Uso:
  *   node --env-file=.env.local scripts/enviar-confirmacao.mjs --teste
- *   node --env-file=.env.local scripts/enviar-confirmacao.mjs <numero> "<nome>" <email> [tratamento]
+ *   node --env-file=.env.local scripts/enviar-confirmacao.mjs <protocolo> [tratamento] [--de-novo]
  *
  * Exemplos:
- *   node --env-file=.env.local scripts/enviar-confirmacao.mjs 016 "Tatiane Nobre" tatianenobre@yahoo.com.br
- *   node --env-file=.env.local scripts/enviar-confirmacao.mjs 017 "Luciana Souza" souzaaluciana@hotmail.com Prezada
+ *   node --env-file=.env.local scripts/enviar-confirmacao.mjs 1
+ *   node --env-file=.env.local scripts/enviar-confirmacao.mjs 5 Prezada
  */
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { neon } from "@neondatabase/serverless";
 
 const raiz = join(dirname(fileURLToPath(import.meta.url)), "..");
 const API = "https://api.resend.com";
@@ -25,17 +28,34 @@ if (!chave) {
   process.exit(1);
 }
 
-let [numero, nome, email, tratamento = "Olá"] = process.argv.slice(2);
-let assunto;
-if (numero === "--teste") {
+const args = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+const teste = process.argv.includes("--teste");
+const deNovo = process.argv.includes("--de-novo");
+
+let numero, nome, email, tratamento, assunto;
+if (teste) {
   numero = "016"; nome = "Marcelinho"; email = "contato@marcelinho.com.br"; tratamento = "Prezado";
   assunto = `[TESTE — via Resend] Requerimento protocolado — nº ${numero}`;
 } else {
-  if (!numero || !nome || !email) {
-    console.error('Uso: node --env-file=.env.local scripts/enviar-confirmacao.mjs <numero> "<nome>" <email> [tratamento]');
+  const protocolo = parseInt(args[0], 10);
+  tratamento = args[1] ?? "Olá";
+  if (!protocolo) {
+    console.error("Uso: node --env-file=.env.local scripts/enviar-confirmacao.mjs <protocolo> [tratamento] [--de-novo]");
     process.exit(1);
   }
-  numero = String(parseInt(numero, 10)).padStart(3, "0");
+  const sql = neon(process.env.DATABASE_URL);
+  const fila = await sql`
+    SELECT ROW_NUMBER() OVER (ORDER BY id)::int AS pos, nome, email, confirmado_em::text AS confirmado_em
+    FROM fila_impresso ORDER BY id`;
+  const pessoa = fila.find((p) => p.pos === protocolo);
+  if (!pessoa) { console.error(`Não existe protocolo ${protocolo} na fila (${fila.length} inscritos).`); process.exit(1); }
+  if (pessoa.confirmado_em && !deNovo) {
+    console.error(`${pessoa.nome} <${pessoa.email}> JÁ recebeu a confirmação em ${pessoa.confirmado_em}.`);
+    console.error("Para reenviar mesmo assim, acrescente --de-novo");
+    process.exit(1);
+  }
+  numero = String(protocolo).padStart(3, "0");
+  nome = pessoa.nome; email = pessoa.email;
   assunto = `Requerimento protocolado — nº ${numero}`;
 }
 
@@ -71,7 +91,12 @@ const r = await fetch(`${API}/emails`, {
 });
 const resp = await r.json();
 if (resp.id) {
-  console.log(`✓ Enviado para ${email} — protocolo nº ${numero} (id ${resp.id})`);
+  console.log(`✓ Enviado para ${nome} <${email}> — protocolo nº ${numero} (id ${resp.id})`);
+  if (!teste) {
+    const sql = neon(process.env.DATABASE_URL);
+    await sql`UPDATE fila_impresso SET confirmado_em = NOW() WHERE email = ${email}`;
+    console.log("✓ Marcado no banco: confirmação enviada.");
+  }
 } else {
   console.error("Falha:", JSON.stringify(resp));
   process.exit(1);

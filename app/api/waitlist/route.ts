@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { bancoConfigurado, contarInscritos, inscrever } from "@/lib/db";
+import { bancoConfigurado, contarInscritos, inscrever, marcarConfirmacaoEnviada } from "@/lib/db";
 import { enviarConfirmacao, registrarNoResend } from "@/lib/resend";
 import { TIRAGEM } from "@/lib/config";
 
@@ -34,7 +34,9 @@ export async function POST(req: Request) {
   try {
     const resultado = await inscrever(nome, email);
     if (!resultado.jaConstava) {
-      await enviarConfirmacao(nome, email, resultado.posicao);
+      if (await enviarConfirmacao(nome, email, resultado.posicao)) {
+        await marcarConfirmacaoEnviada(email);
+      }
       await registrarNoResend(nome, email, resultado.posicao);
     }
     return NextResponse.json({ ok: true, ...resultado });

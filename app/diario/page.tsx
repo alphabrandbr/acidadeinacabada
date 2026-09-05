@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import portarias from "@/portarias.json";
+import { AssinaturaBoletim } from "@/app/componentes/AssinaturaBoletim";
 
 type Publicacao = {
   numero: number;
@@ -45,6 +46,7 @@ export default function Diario() {
                 </a>
               ))}
             </nav>
+            <AssinaturaBoletim />
           </aside>
 
           <div className="diario-corpo">

@@ -11,9 +11,9 @@ const REMETENTE = 'Otoniel, do Departamento <departamento@acidadeinacabada.com.b
 const RESPONDER_PARA = "marcelinho.eu@gmail.com";
 
 /** E-mail de confirmação com o template oficial (emails/confirmacao-reserva.html). */
-export async function enviarConfirmacao(nome: string, email: string, posicao: number) {
+export async function enviarConfirmacao(nome: string, email: string, posicao: number): Promise<boolean> {
   const { RESEND_API_KEY } = process.env;
-  if (!RESEND_API_KEY) return;
+  if (!RESEND_API_KEY) return false;
   const numero = String(posicao).padStart(3, "0");
   try {
     const html = readFileSync(join(process.cwd(), "emails/confirmacao-reserva.html"), "utf8")
@@ -32,9 +32,14 @@ export async function enviarConfirmacao(nome: string, email: string, posicao: nu
         html,
       }),
     });
-    if (!r.ok) console.error("confirmacao ao inscrito:", r.status, await r.text());
+    if (!r.ok) {
+      console.error("confirmacao ao inscrito:", r.status, await r.text());
+      return false;
+    }
+    return true;
   } catch (err) {
     console.error("confirmacao ao inscrito (rede):", err);
+    return false;
   }
 }
 

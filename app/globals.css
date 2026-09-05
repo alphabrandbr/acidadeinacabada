@@ -438,3 +438,22 @@ html[data-atendido="1"] .cortina{display:none}
   .diario-menu{position:static;margin-bottom:.6rem}
   .diario-corpo{max-width:none}
 }
+
+/* ══════════ assinatura do boletim ══════════ */
+.diario-assinar{border-top:1px solid rgba(246,239,224,.25);margin-top:1.2rem;padding-top:1rem}
+.diario-assinar .chamada{font-family:var(--texto);font-size:.82rem;line-height:1.5;
+  color:rgba(246,239,224,.85);margin-bottom:.9rem}
+.diario-assinar input[type=email]{
+  width:100%;font-family:var(--texto);font-size:.9rem;color:#f6efe0;
+  background:transparent;border:0;border-bottom:1.5px solid rgba(246,239,224,.4);
+  padding:.4rem .1rem;margin-bottom:.9rem;outline:none;
+}
+.diario-assinar input[type=email]::placeholder{color:rgba(246,239,224,.45)}
+.diario-assinar input[type=email]:focus{border-bottom-color:var(--lampiao)}
+.diario-assinar .botao{width:100%;background:#f6efe0;color:var(--vinho);
+  font-size:.66rem;padding:.75rem 1rem;text-align:center}
+.diario-assinar .botao:hover{background:var(--lampiao);color:#241f1b}
+.diario-assinar .assinado{font-family:var(--maquina);font-size:.62rem;letter-spacing:.12em;
+  line-height:2;color:var(--lampiao);text-transform:uppercase}
+.diario-assinar .erro{font-family:var(--maquina);font-size:.6rem;letter-spacing:.1em;
+  color:#f2c1b6;margin-top:.6rem;text-transform:uppercase}

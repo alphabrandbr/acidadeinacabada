@@ -13,8 +13,8 @@ export async function GET(req: Request) {
   const inscritos = await listarInscritos();
   const escapar = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`;
   const linhas = [
-    ["posicao", "nome", "email", "protocolado_em"].join(";"),
-    ...inscritos.map((i) => [i.posicao, i.nome, i.email, i.criado_em].map(escapar).join(";")),
+    ["posicao", "nome", "email", "protocolado_em", "confirmado_em"].join(";"),
+    ...inscritos.map((i) => [i.posicao, i.nome, i.email, i.criado_em, i.confirmado_em ?? ""].map(escapar).join(";")),
   ];
 
   return new Response("﻿" + linhas.join("\r\n"), {
